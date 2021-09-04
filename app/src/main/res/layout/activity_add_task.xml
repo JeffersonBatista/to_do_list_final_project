@@ -5,12 +5,133 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         app:title="Criar Tarefa"
-        app:navigationIcon=""
+        app:navigationIcon="@drawable/ic_navigation"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_title"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="Título"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+        
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_description"
+        app:layout_constraintTop_toBottomOf="@+id/input_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="Descrição"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_date"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="Data"
+        app:startIconDrawable="@drawable/ic_calendar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/input_description"
+        app:layout_constraintStart_toStartOf="@+id/guide_start"
+        app:layout_constraintEnd_toStartOf="@id/input_hour"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="none"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_hour"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="Hora"
+        app:startIconDrawable="@drawable/ic_hour"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/input_date"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toEndOf="@id/input_date"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="none"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:startIconDrawable="@drawable/ic_cancel"
+        android:text="CANCELAR"
+        app:layout_constraintStart_toStartOf="@+id/guide_start"
+        app:layout_constraintEnd_toEndOf="@+id/guide_end"
+        app:layout_constraintBottom_toTopOf="@+id/btn_create"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_create"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:startIconDrawable="@drawable/ic_criar"
+        android:text="CRIAR"
+        app:layout_constraintStart_toStartOf="@+id/guide_start"
+        app:layout_constraintEnd_toEndOf="@+id/guide_end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
