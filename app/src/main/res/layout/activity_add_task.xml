@@ -6,7 +6,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
-        app:title="Criar Tarefa"
+        app:title="@string/label_new_task"
         app:navigationIcon="@drawable/ic_navigation"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:id="@+id/input_title"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Título"
+        android:hint="@string/label_title"
         android:layout_width="0dp"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
@@ -50,7 +50,7 @@
         android:id="@+id/input_description"
         app:layout_constraintTop_toBottomOf="@+id/input_title"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Descrição"
+        android:hint="@string/label_description"
         android:layout_width="0dp"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
@@ -67,7 +67,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_date"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Data"
+        android:hint="@string/label_date"
         app:startIconDrawable="@drawable/ic_calendar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_hour"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Hora"
+        android:hint="@string/label_hour"
         app:startIconDrawable="@drawable/ic_hour"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
         android:layout_marginBottom="16dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:startIconDrawable="@drawable/ic_cancel"
-        android:text="CANCELAR"
+        android:text="@string/label_cancel"
         app:layout_constraintStart_toStartOf="@+id/guide_start"
         app:layout_constraintEnd_toEndOf="@+id/guide_end"
         app:layout_constraintBottom_toTopOf="@+id/btn_create"
@@ -126,12 +126,11 @@
         android:layout_marginBottom="16dp"
         style="@style/Widget.MaterialComponents.Button"
         app:startIconDrawable="@drawable/ic_criar"
-        android:text="CRIAR"
+        android:text="@string/label_create"
         app:layout_constraintStart_toStartOf="@+id/guide_start"
         app:layout_constraintEnd_toEndOf="@+id/guide_end"
         app:layout_constraintBottom_toBottomOf="parent"
         />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
