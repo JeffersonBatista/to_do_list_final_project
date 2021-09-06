@@ -3,7 +3,9 @@ package br.com.dio.santander.to_do_list.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import br.com.dio.santander.to_do_list.databinding.ActivityMainBinding
+import br.com.dio.santander.to_do_list.datasource.TaskDataSource
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,13 +17,33 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rvTasks.adapter = adapter
+
         insertListeners()
     }
 
     private fun insertListeners(){
         binding.btnAdd.setOnClickListener {
-            startActivity(Intent(this, AddTaskActivity::class.java))
+            startActivityForResult(Intent(this, AddTaskActivity::class.java), CREATE_NEW_TASK)
         }
+
+        adapter.listenerEdit = {
+            Log.e("TAG", "Edit $it")
+        }
+
+        adapter.listenerDelete = {
+            Log.e("TAG", "Delete $it")
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CREATE_NEW_TASK){
+            binding.rvTasks.adapter = adapter
+            adapter.submitList(TaskDataSource.getList())
+        }
+    }
+
+    companion object {
+        private const val CREATE_NEW_TASK = 1000
     }
 }

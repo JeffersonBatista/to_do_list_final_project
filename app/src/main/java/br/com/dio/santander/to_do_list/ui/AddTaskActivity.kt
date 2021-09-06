@@ -1,5 +1,6 @@
 package br.com.dio.santander.to_do_list.ui
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -62,6 +63,7 @@ class AddTaskActivity : AppCompatActivity() {
                 hour = binding.inputHour.text
             )
             TaskDataSource.insertTask(task)
+            setResult(Activity.RESULT_OK)
             finish()
         }
 
