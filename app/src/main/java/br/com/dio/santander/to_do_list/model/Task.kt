@@ -22,5 +22,4 @@ data class Task(
     override fun hashCode(): Int {
         return id
     }
-
 }

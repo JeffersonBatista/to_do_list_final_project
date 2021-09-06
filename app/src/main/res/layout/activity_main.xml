@@ -18,6 +18,10 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <include
+        android:id="@+id/is_empty"
+        layout="@layout/empty_state"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tasks"
         android:layout_width="match_parent"
@@ -26,6 +30,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        tools:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="8"
         tools:listitem="@layout/item_task"

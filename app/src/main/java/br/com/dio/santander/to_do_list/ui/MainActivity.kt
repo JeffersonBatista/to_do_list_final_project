@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import br.com.dio.santander.to_do_list.databinding.ActivityMainBinding
 import br.com.dio.santander.to_do_list.datasource.TaskDataSource
 
@@ -27,12 +28,14 @@ class MainActivity : AppCompatActivity() {
     private fun insertListeners(){
         binding.btnAdd.setOnClickListener {
             startActivityForResult(Intent(this, AddTaskActivity::class.java), CREATE_NEW_TASK)
+            updateList()
         }
 
         adapter.listenerEdit = {
             val intent = Intent(this, AddTaskActivity::class.java)
             intent.putExtra(AddTaskActivity.TASK_ID, it.id)
             startActivityForResult(intent, CREATE_NEW_TASK)
+            updateList()
         }
 
         adapter.listenerDelete = {
@@ -45,12 +48,18 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CREATE_NEW_TASK && resultCode == Activity.RESULT_OK){
 
-            adapter.submitList(TaskDataSource.getList())
+            updateList()
         }
     }
 
     private fun updateList(){
-        adapter.submitList(TaskDataSource.getList())
+        val list = TaskDataSource.getList()
+        if(list.isEmpty()){
+            binding.isEmpty.emptyState.visibility = View.VISIBLE
+        }else{
+            binding.isEmpty.emptyState.visibility = View.GONE
+        }
+        adapter.submitList(list)
     }
 
     companion object {

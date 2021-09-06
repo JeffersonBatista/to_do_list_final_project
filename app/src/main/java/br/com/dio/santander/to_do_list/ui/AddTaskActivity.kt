@@ -76,6 +76,7 @@ class AddTaskActivity : AppCompatActivity() {
             TaskDataSource.insertTask(task)
             setResult(Activity.RESULT_OK)
             finish()
+
         }
 
         //Cancelar
@@ -85,7 +86,7 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val TASK_ID = "task_id"
+        const val TASK_ID = "task.id"
     }
 
 }

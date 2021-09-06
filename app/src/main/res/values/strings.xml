@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lista de Tarefas</string>
+    <string name="app_name">It Post</string>
     <string name="label_new_task">Criar Tarefa</string>
     <string name="label_title">Título</string>
     <string name="label_description">Descrição</string>
@@ -11,4 +11,5 @@
     <string name="label_description_new_task">Nova Tarefa</string>
     <string name="label_editar">Editar</string>
     <string name="label_delete">Deletar</string>
+    <string name="label_dont_have">Ops! você não possui\n nenhuma tarefa agendada...</string>
 </resources>
