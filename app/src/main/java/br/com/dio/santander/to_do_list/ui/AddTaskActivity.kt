@@ -2,10 +2,13 @@ package br.com.dio.santander.to_do_list.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import br.com.dio.santander.to_do_list.databinding.ActivityAddTaskBinding
 import br.com.dio.santander.to_do_list.extensions.format
 import br.com.dio.santander.to_do_list.extensions.text
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import java.util.*
 
 class AddTaskActivity : AppCompatActivity() {
@@ -21,7 +24,7 @@ class AddTaskActivity : AppCompatActivity() {
         insertListeners()
     }
 
-    // Método de inserção da data
+    // Método de inserção das funções de click
     private fun insertListeners(){
         binding.inputDate.editText?.setOnClickListener{
             val datePicker = MaterialDatePicker.Builder.datePicker().build()
@@ -31,6 +34,16 @@ class AddTaskActivity : AppCompatActivity() {
                 binding.inputDate.text = Date(it + offset).format()
             }
             datePicker.show(supportFragmentManager, "DATE_PICKER_TAG")
+        }
+
+        binding.inputHour.editText?.setOnClickListener {
+            val timePicker = MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .build()
+            timePicker.addOnPositiveButtonClickListener{
+                binding.inputHour.text = "${timePicker.hour} : ${timePicker.minute}"
+            }
+            timePicker.show(supportFragmentManager, null)
         }
     }
 
