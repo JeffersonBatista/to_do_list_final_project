@@ -61,7 +61,8 @@ class AddTaskActivity : AppCompatActivity() {
                 date = binding.inputDate.text,
                 hour = binding.inputHour.text
             )
-
+            TaskDataSource.insertTask(task)
+            finish()
         }
 
         //Cancelar
