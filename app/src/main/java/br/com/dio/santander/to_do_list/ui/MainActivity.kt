@@ -1,5 +1,6 @@
 package br.com.dio.santander.to_do_list.ui
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.rvTasks.adapter = adapter
+        updateList()
 
         insertListeners()
     }
@@ -27,20 +30,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter.listenerEdit = {
-            Log.e("TAG", "Edit $it")
+            val intent = Intent(this, AddTaskActivity::class.java)
+            intent.putExtra(AddTaskActivity.TASK_ID, it.id)
+            startActivityForResult(intent, CREATE_NEW_TASK)
         }
 
         adapter.listenerDelete = {
-            Log.e("TAG", "Delete $it")
+            startActivityForResult(Intent(this, AddTaskActivity::class.java), CREATE_NEW_TASK)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CREATE_NEW_TASK){
-            binding.rvTasks.adapter = adapter
+        if (requestCode == CREATE_NEW_TASK && resultCode == Activity.RESULT_OK){
+
             adapter.submitList(TaskDataSource.getList())
         }
+    }
+
+    private fun updateList(){
+        adapter.submitList(TaskDataSource.getList())
     }
 
     companion object {
